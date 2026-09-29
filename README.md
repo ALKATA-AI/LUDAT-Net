@@ -11,13 +11,15 @@ Pre-trained model weights are not provided. The model can be trained from scratc
 
 1. Python >= 3.6.
    
-2. Clone this repository.
+2. Clone this repository:
 
 ```bash
 git clone https://github.com/ALKATA-AI/LUDAT-Net.git
 ```
 
-3. Install the Python requirements. Please refer to [requirements.txt](https://github.com/ALKATA-AI/LUDAT-Net/blob/main/requirements.txt).
+3. Install the Python requirements:
+   
+Please refer to [requirements.txt](https://github.com/ALKATA-AI/LUDAT-Net/blob/main/requirements.txt).
 
 ```bash
 pip install -r requirements.txt 
