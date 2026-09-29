@@ -63,7 +63,19 @@ python inference.py
  --input_test_file VoiceBank+DEMAND/test.txt `
  --output_dir generated_files/g_best
 ```
- 
+
+## Inference Speed
+
+Install the required packages:
+
+```bash
+pip install thop
+pip install attrdict
+
+Then, run the following command:
+
+python inference_speed.py --checkpoint_file "checkpoints/g_best"
+
 ## Model Structure
 
 ## Comparison with other SE models
