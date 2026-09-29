@@ -11,7 +11,7 @@ Pre-trained model weights are not provided. The model can be trained from scratc
 
 **<p>1. Python >= 3.6.</p>**
    
-## <p>2. Clone this repository:</p>
+### <p>2. Clone this repository:</p>
 
 ```bash
 git clone https://github.com/ALKATA-AI/LUDAT-Net.git
