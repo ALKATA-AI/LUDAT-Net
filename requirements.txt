@@ -7,10 +7,14 @@
 librosa==0.10.2
 numpy==1.26.4
 scipy
-tensorboard==2.11.0
 SoundFile
 einops==0.6.1
 joblib==1.2.0
 natsort==8.4.0
-pesq==0.0.4
 torchinfo
+"numpy<2"
+pesq
+pandas
+matplotlib
+tensorboard
+rich
