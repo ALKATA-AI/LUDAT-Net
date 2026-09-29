@@ -1,6 +1,6 @@
 # LUDAT-Net
 ### Alireza KayedNezami, Laleh Tariveh, Rahil Mahdian Toroghi, Hassan Zareian
-**Official implementation of LUDAT-Net, accepted at ... 2027.**
+**Official implementation of LUDAT-Net, accepted at IEEE/ACM Transactions on Audio, Speech, and Language Processing 2027.**
 
 **Abstract:**
 
