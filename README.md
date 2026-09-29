@@ -24,7 +24,7 @@ Please refer to [requirements.txt](https://github.com/ALKATA-AI/LUDAT-Net/blob/m
 ```bash
 pip install -r requirements.txt 
 ```
-<p>4. Download and extract the <a href="https://datashare.ed.ac.uk/items/e3eb2725-46b6-40c6-88cf-3ccad62cd419">VoiceBank+DEMAND dataset</a>. Resample all wav files to 16 kHz, and move the clean and noisy WAV files to `VoiceBank+DEMAND/wavs_clean` and `VoiceBank+DEMAND/wavs_noisy`, respectively. Alternatively, you can directly download the downsampled 16 kHz dataset <a href="https://drive.google.com/drive/folders/19I_thf6F396y5gZxLTxYIojZXC0Ywm8l">here</a>.</p>
+<p>4. Download and extract the <a href="https://datashare.ed.ac.uk/items/e3eb2725-46b6-40c6-88cf-3ccad62cd419">VoiceBank+DEMAND dataset</a>. Resample all wav files to 16 kHz, and move the clean and noisy WAV files to Voice<code>Bank+DEMAND/wavs_clean</code> and <code>VoiceBank+DEMAND/wavs_noisy</code>, respectively. Alternatively, you can directly download the downsampled 16 kHz dataset <a href="https://drive.google.com/drive/folders/19I_thf6F396y5gZxLTxYIojZXC0Ywm8l">here</a>.</p>
 
 
 ## Training
