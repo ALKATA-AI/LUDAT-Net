@@ -37,8 +37,32 @@ Resample all wav files to 16 kHz, and move the clean and noisy WAV files to <cod
 
 ## Training
 
+For single GPU (Recommend), PrimeK-Net needs at least 13 GB GPU memery.
+Training parameters can be configured directly in `train.py` or provided as command-line arguments when running the script.
+
+```bash
+python train.py
+ --input_clean_wavs_dir "VoiceBank+DEMAND/wavs_clean" `
+ --input_noisy_wavs_dir "VoiceBank+DEMAND/wavs_noisy" `
+ --checkpoint_path "checkpoints" `
+ --config "config.json" `
+ --input_training_file "VoiceBank+DEMAND/training.txt" `
+ --input_validation_file "VoiceBank+DEMAND/test.txt"
+```
+
 ## Inference
 
+Inference parameters can be specified either directly in `inference.py` or provided as command-line arguments.
+
+```bash
+python inference.py
+ --checkpoint_file=checkpoints\g_best `
+ --input_clean_wavs_dir VoiceBank+DEMAND/wavs_clean `
+ --input_noisy_wavs_dir VoiceBank+DEMAND/wavs_noisy `
+ --input_test_file VoiceBank+DEMAND/test.txt `
+ --output_dir generated_files/g_best
+```
+ 
 ## Model Structure
 
 ## Comparison with other SE models
