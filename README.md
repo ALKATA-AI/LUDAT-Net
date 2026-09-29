@@ -83,13 +83,13 @@ python inference_speed.py --checkpoint_file "checkpoints/g_best"
 
 **1. Install the Required Libraries**
 
-Install Whisper and the required audio processing libraries:
+Install [Whisper](https://github.com/openai/whisper) and the required audio processing libraries:
 
 ```bash
 pip install openai-whisper librosa
 ```
 
-Install jiwer for calculating WER and CER:
+Install [jiwer](https://jitsi.github.io/jiwer/) for calculating WER and CER:
 
 ```bash
 pip install jiwer
