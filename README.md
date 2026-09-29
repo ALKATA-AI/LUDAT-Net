@@ -37,7 +37,7 @@ Resample all wav files to 16 kHz, and move the clean and noisy WAV files to <cod
 
 ## Training
 
-For single GPU (Recommend), PrimeK-Net needs at least 13 GB GPU memery.
+For single GPU (Recommend), LUDAT-Net needs at least 13 GB GPU memery.
 
 Training parameters can be configured directly in `train.py` or provided as command-line arguments when running the script.
 
