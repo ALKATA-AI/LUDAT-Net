@@ -71,10 +71,13 @@ Install the required packages:
 ```bash
 pip install thop
 pip install attrdict
+```
 
 Then, run the following command:
 
+```bash
 python inference_speed.py --checkpoint_file "checkpoints/g_best"
+```
 
 ## Model Structure
 
