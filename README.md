@@ -14,15 +14,6 @@ Pre-trained model weights are not provided. The model can be trained from scratc
 ## Inference
 
 ## Model Structure
-<p align="center">
-  text
-  <img src="Figures/Fig1-BMP.bmp" alt="LUDAT-Net Architecture">
-</p>
-
-<p align="center">
-  text
-  <img src="Figures/Fig2-BMP.bmp" alt="LUDAT-Net Architecture">
-</p>
 
 ## Comparison with other SE models
 <p align="center">
