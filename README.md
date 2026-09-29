@@ -13,7 +13,7 @@ Pre-trained model weights are not provided. The model can be trained from scratc
 ```bash
 git clone https://github.com/ALKATA-AI/LUDAT-Net.git
 ```
-3. Install python requirements. Please refer [requirements.txt](https://datashare.ed.ac.uk/items/e3eb2725-46b6-40c6-88cf-3ccad62cd419).
+3. Install python requirements. Please refer [requirements.txt](https://github.com/ALKATA-AI/LUDAT-Net/blob/main/requirements.txt).
 ```bash
 pip install -r requirements.txt 
 ```
