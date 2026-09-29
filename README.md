@@ -17,7 +17,7 @@ git clone
 ```bash
 pip install -r requirements.txt 
 ```
-4. Download and extract the [VoiceBank+DEMAND dataset](https://datashare.ed.ac.uk/items/e3eb2725-46b6-40c6-88cf-3ccad62cd419). Resample all wav files to 16kHz, and move the clean and noisy wavs to VoiceBank+DEMAND/wavs_clean and VoiceBank+DEMAND/wavs_noisy, respectively. You can also directly download the downsampled 16kHz dataset [here](https://drive.google.com/drive/folders/19I_thf6F396y5gZxLTxYIojZXC0Ywm8l).
+4. Download and extract the [VoiceBank+DEMAND dataset](https://datashare.ed.ac.uk/items/e3eb2725-46b6-40c6-88cf-3ccad62cd419). Resample all wav files to 16kHz, and move the clean and noisy wavs to `VoiceBank+DEMAND/wavs_clean` and `VoiceBank+DEMAND/wavs_noisy`, respectively. You can also directly download the downsampled 16kHz dataset [here](https://drive.google.com/drive/folders/19I_thf6F396y5gZxLTxYIojZXC0Ywm8l).
 
 ## Training
 
