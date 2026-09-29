@@ -79,6 +79,36 @@ Then, run the following command:
 python inference_speed.py --checkpoint_file "checkpoints/g_best"
 ```
 
+## WER and CER Evaluation
+
+### 1. Install the Required Libraries
+
+Install Whisper and the required audio processing libraries:
+
+```bash
+pip install openai-whisper librosa
+```
+
+Install jiwer for calculating WER and CER:
+
+```bash
+pip install jiwer
+```
+
+### 2. Test CUDA and Load the Model
+
+Run the following command to verify CUDA availability and load the Whisper model:
+
+```bash
+python test_cuda_and_load_model.py
+```
+
+### 3. Calculate WER and CER
+
+```bash
+python calculate_wer_cer.py
+```
+
 ## Model Structure
 
 ## Comparison with other SE models
