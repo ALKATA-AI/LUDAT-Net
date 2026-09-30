@@ -9,7 +9,7 @@ import json
 from re import S
 import torch
 import librosa
-from env import AttrDict
+from tools.env import AttrDict
 from datasets.dataset import mag_pha_stft, mag_pha_istft
 from models.network import DAT_UNet
 import soundfile as sf
