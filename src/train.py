@@ -30,7 +30,7 @@ from torch.distributed import init_process_group
 from torch.nn.parallel import DistributedDataParallel
 
 # Custom Modules
-from env import AttrDict, build_env
+from tools.env import AttrDict, build_env
 from datasets.dataset import Val_Dataset, Dataset, mag_pha_stft, mag_pha_istft, get_dataset_filelist
 from models.network import DAT_UNet, pesq_score, phase_losses
 from utils import scan_checkpoint, load_checkpoint, save_checkpoint as original_save_checkpoint
