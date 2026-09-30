@@ -64,15 +64,6 @@ python inference.py `
  --output_dir generated_files/g_best
 ```
 
-```bash
-python inference.py `
- --checkpoint_file=64-4-CONMETRIC-8new\g_best `
- --input_clean_wavs_dir VoiceBank+DEMAND/wavs_clean `
- --input_noisy_wavs_dir VoiceBank+DEMAND/wavs_noisy `
- --input_test_file VoiceBank+DEMAND/test.txt `
- --output_dir generated_files/g_best_8new
-```
-
 ## Inference Speed
 
 Install the required packages:
@@ -86,6 +77,18 @@ Then, run the following command:
 
 ```bash
 python inference_speed.py --checkpoint_file "checkpoints/g_best"
+```
+
+## Evaluation
+
+Evaluation parameters can be specified either directly in `evaluation.py` or provided as command-line arguments.
+
+```bash
+python evaluation.py `
+ --config_file config.json `
+ --input_clean_wavs_dir VoiceBank+DEMAND/wavs_clean `
+ --input_test_file VoiceBank+DEMAND/test.txt `
+ --input_enhanced_wavs_dir generated_files/g_best
 ```
 
 ## WER and CER Evaluation
