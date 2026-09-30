@@ -10,7 +10,7 @@ import argparse
 import json
 import torch
 import librosa
-from env import AttrDict
+from tools.env import AttrDict
 from rich.progress import track
 from datasets.dataset import mag_pha_stft, mag_pha_istft
 from models.network import DAT_UNet
