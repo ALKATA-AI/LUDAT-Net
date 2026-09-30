@@ -11,7 +11,7 @@ import numpy as np
 from tools.compute_metrics import compute_metrics
 from rich.progress import track
 import json
-from env import AttrDict
+from tools.env import AttrDict
 
 def get_dataset_filelist(input_test_file):
     with open(input_test_file, 'r', encoding='utf-8') as fi:
