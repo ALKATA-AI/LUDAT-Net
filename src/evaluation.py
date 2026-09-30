@@ -8,7 +8,7 @@ import os
 import argparse
 import librosa
 import numpy as np
-from compute_metrics import compute_metrics
+from tools.compute_metrics import compute_metrics
 from rich.progress import track
 import json
 from env import AttrDict
