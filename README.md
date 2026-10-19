@@ -124,9 +124,6 @@ python calculate_wer_cer.py
 ## Model Structure
 
 ## Comparison with other SE models
-<p align="center">
-  <img src="Figures/Table2 - GSE-Net.png" alt="LUDAT-Net Architecture">
-</p>
 
 ## Acknowledgements 
 We referred to [GSE-Net](https://github.com/ALKATA-AI/GSE-Net), [IDTransformer](https://github.com/szw811/IDTransformer), [PrimeK-Net](https://github.com/huaidanquede/PrimeK-Net), [CBAM](https://github.com/Peachypie98/CBAM) and [CMGAN](https://github.com/ruizhecao96/CMGAN) to implement this.
