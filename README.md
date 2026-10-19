@@ -1,6 +1,4 @@
 # LUDAT-Net: A Layer-wise U-Shaped Architecture Using Depthwise-Augmented Transformers for Single-Channel Speech Enhancement
-### Alireza KayedNezami, Laleh Tariveh, Rahil Mahdian Toroghi, Hassan Zareian
-**Official implementation of LUDAT-Net, accepted at IEEE/ACM Transactions on Audio, Speech, and Language Processing 2027.**
 
 **Abstract:**
 
