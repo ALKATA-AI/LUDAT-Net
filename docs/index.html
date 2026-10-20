@@ -1,257 +1,206 @@
-from pathlib import Path
-import zipfile, textwrap, os
-
-base = Path("/mnt/data/LUDAT-Net-demo-starter")
-docs = base / "docs"
-assets = docs / "assets"
-css = assets / "css"
-js = assets / "js"
-audio = docs / "audio"
-for p in (css, js, audio):
-    p.mkdir(parents=True, exist_ok=True)
-
-index_html = r'''<!doctype html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="LUDAT-Net: a lightweight model for monaural speech enhancement. Listen to speech enhancement samples and explore the research.">
-  <meta name="theme-color" content="#17152d">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="LUDAT-Net: A deep learning model for monaural speech enhancement. Listen to noisy speech, clean references, and enhanced outputs.">
   <title>LUDAT-Net | Speech Enhancement</title>
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-  <header class="site-header">
-    <nav class="nav container" aria-label="Main navigation">
-      <a class="brand" href="#top" aria-label="LUDAT-Net home"><span class="brand-mark">L</span><span>LUDAT-Net</span></a>
-      <div class="nav-links">
-        <a href="#overview">Overview</a>
-        <a href="#samples">Audio samples</a>
-        <a href="#results">Results</a>
-        <a href="#resources">Resources</a>
+
+  <header class="hero">
+    <div class="container hero-content">
+      <p class="eyebrow">MONAURAL SPEECH ENHANCEMENT</p>
+      <h1>LUDAT-Net</h1>
+      <p class="hero-subtitle">
+        A Deep Learning Framework for Monaural Speech Enhancement
+      </p>
+      <p class="hero-description">
+        Explore speech enhancement results by comparing noisy input speech,
+        clean reference recordings, and the corresponding outputs generated
+        by LUDAT-Net.
+      </p>
+      <div class="hero-actions">
+        <a class="button button-primary" href="#audio-samples">Listen to Samples</a>
+        <a class="button button-secondary"
+           href="https://github.com/ALKATA-AI/LUDAT-Net"
+           target="_blank" rel="noopener noreferrer">View on GitHub</a>
       </div>
-      <a class="nav-cta" href="https://github.com/ALKATA-AI/LUDAT-Net" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
-    </nav>
+    </div>
   </header>
 
-  <main id="top">
-    <section class="hero">
-      <div class="hero-glow" aria-hidden="true"></div>
-      <div class="container hero-content">
-        <p class="eyebrow"><span class="eyebrow-dot"></span> MONAURAL SPEECH ENHANCEMENT</p>
-        <h1>Clearer speech.<br><span>Lightweight intelligence.</span></h1>
-        <p class="hero-copy">LUDAT-Net is a deep learning model for monaural speech enhancement, designed to recover clean speech from noisy recordings.</p>
-        <div class="hero-actions">
-          <a class="button button-primary" href="#samples">Listen to samples <span aria-hidden="true">↓</span></a>
-          <a class="button button-secondary" href="https://github.com/ALKATA-AI/LUDAT-Net" target="_blank" rel="noopener noreferrer">Explore the code <span aria-hidden="true">↗</span></a>
-        </div>
-        <div class="hero-meta">
-          <span><span class="meta-dot"></span> VoiceBank+DEMAND</span>
-          <span>16 kHz audio</span>
-          <span>Research demo</span>
-        </div>
-      </div>
-      <div class="hero-visual container" aria-label="Decorative audio waveform">
-        <div class="wave-card">
-          <div class="wave-heading"><span>NOISY INPUT</span><span class="wave-label">ILLUSTRATIVE</span></div>
-          <div class="waveform noisy-wave" aria-hidden="true"></div>
-          <div class="wave-divider"></div>
-          <div class="wave-heading"><span>ENHANCED SPEECH</span><span class="wave-label wave-label-purple">LUDAT-NET</span></div>
-          <div class="waveform clean-wave" aria-hidden="true"></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section container" id="overview">
-      <div class="section-heading">
-        <p class="eyebrow">01 / OVERVIEW</p>
-        <h2>About the research</h2>
-      </div>
-      <div class="overview-grid">
-        <div class="overview-main">
-          <p class="lead">Speech enhancement aims to improve the quality and intelligibility of speech degraded by background noise.</p>
-          <p>This page presents LUDAT-Net and provides a place to compare noisy input, clean reference speech, and enhanced output. The page is a static research demo; audio samples will be linked from the project files.</p>
-          <div class="notice"><strong>Research note</strong><p>The final abstract, author details, and exact experimental claims will be added after they are confirmed from the project manuscript.</p></div>
-        </div>
-        <aside class="fact-card">
-          <div class="fact"><span>Task</span><strong>Monaural speech enhancement</strong></div>
-          <div class="fact"><span>Dataset</span><strong>VoiceBank+DEMAND</strong></div>
-          <div class="fact"><span>Sampling rate</span><strong>16 kHz</strong></div>
-          <div class="fact"><span>Implementation</span><strong>PyTorch</strong></div>
-        </aside>
-      </div>
-    </section>
-
-    <section class="section samples-section" id="samples">
+  <main>
+    <section class="section" id="overview">
       <div class="container">
-        <div class="section-heading">
-          <p class="eyebrow">02 / LISTEN</p>
-          <h2>Audio samples</h2>
-          <p class="section-intro">Listen to each recording and compare the noisy input, clean reference, and LUDAT-Net output.</p>
-        </div>
-        <div class="sample-toolbar">
-          <div><span class="sample-count">SAMPLE COLLECTION</span><p>VoiceBank+DEMAND · WAV</p></div>
-          <span class="coming-label">Sample paths to be connected</span>
-        </div>
-        <div class="table-wrap">
+        <h2>Overview</h2>
+        <p>
+          Monaural speech enhancement aims to recover clean speech from
+          recordings contaminated by background noise. LUDAT-Net is a
+          deep learning approach developed for this task, with an emphasis
+          on speech reconstruction and efficient model design.
+        </p>
+        <p>
+          This demo provides audio examples for qualitative comparison.
+          Each example includes the noisy input, the clean reference, and
+          the enhanced output produced by LUDAT-Net.
+        </p>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="audio-samples">
+      <div class="container">
+        <h2>Audio Samples</h2>
+        <p class="section-intro">
+          Listen to each recording using the audio players below.
+          For a fair comparison, the recordings in each row should correspond
+          to the same speech utterance.
+        </p>
+
+        <div class="table-wrapper">
           <table class="audio-table">
-            <thead><tr><th>Sample</th><th>Noisy</th><th>Clean reference</th><th>LUDAT-Net</th></tr></thead>
+            <thead>
+              <tr>
+                <th>Sample</th>
+                <th>Noisy Input</th>
+                <th>Clean Reference</th>
+                <th>LUDAT-Net Output</th>
+              </tr>
+            </thead>
             <tbody>
               <tr>
-                <th scope="row"><span class="sample-number">01</span><span class="sample-title">Sample 1</span></th>
-                <td><audio controls preload="none" data-sample="sample1_noisy.wav"><source src="audio/sample1_noisy.wav" type="audio/wav">Your browser does not support audio.</audio><span class="file-status">audio/sample1_noisy.wav</span></td>
-                <td><audio controls preload="none" data-sample="sample1_clean.wav"><source src="audio/sample1_clean.wav" type="audio/wav">Your browser does not support audio.</audio><span class="file-status">audio/sample1_clean.wav</span></td>
-                <td><audio controls preload="none" data-sample="sample1_ludat.wav"><source src="audio/sample1_ludat.wav" type="audio/wav">Your browser does not support audio.</audio><span class="file-status">audio/sample1_ludat.wav</span></td>
+                <th scope="row">Sample 1</th>
+                <td>
+                  <audio controls preload="none" data-sample="sample1_noisy.wav">
+                    <source src="audio/sample1_noisy.wav" type="audio/wav">
+                  </audio>
+                  <p class="file-status"></p>
+                </td>
+                <td>
+                  <audio controls preload="none" data-sample="sample1_clean.wav">
+                    <source src="audio/sample1_clean.wav" type="audio/wav">
+                  </audio>
+                  <p class="file-status"></p>
+                </td>
+                <td>
+                  <audio controls preload="none" data-sample="sample1_ludat.wav">
+                    <source src="audio/sample1_ludat.wav" type="audio/wav">
+                  </audio>
+                  <p class="file-status"></p>
+                </td>
               </tr>
+
               <tr>
-                <th scope="row"><span class="sample-number">02</span><span class="sample-title">Sample 2</span></th>
-                <td><audio controls preload="none" data-sample="sample2_noisy.wav"><source src="audio/sample2_noisy.wav" type="audio/wav">Your browser does not support audio.</audio><span class="file-status">audio/sample2_noisy.wav</span></td>
-                <td><audio controls preload="none" data-sample="sample2_clean.wav"><source src="audio/sample2_clean.wav" type="audio/wav">Your browser does not support audio.</audio><span class="file-status">audio/sample2_clean.wav</span></td>
-                <td><audio controls preload="none" data-sample="sample2_ludat.wav"><source src="audio/sample2_ludat.wav" type="audio/wav">Your browser does not support audio.</audio><span class="file-status">audio/sample2_ludat.wav</span></td>
+                <th scope="row">Sample 2</th>
+                <td>
+                  <audio controls preload="none" data-sample="sample2_noisy.wav">
+                    <source src="audio/sample2_noisy.wav" type="audio/wav">
+                  </audio>
+                  <p class="file-status"></p>
+                </td>
+                <td>
+                  <audio controls preload="none" data-sample="sample2_clean.wav">
+                    <source src="audio/sample2_clean.wav" type="audio/wav">
+                  </audio>
+                  <p class="file-status"></p>
+                </td>
+                <td>
+                  <audio controls preload="none" data-sample="sample2_ludat.wav">
+                    <source src="audio/sample2_ludat.wav" type="audio/wav">
+                  </audio>
+                  <p class="file-status"></p>
+                </td>
               </tr>
+
               <tr>
-                <th scope="row"><span class="sample-number">03</span><span class="sample-title">Sample 3</span></th>
-                <td><audio controls preload="none" data-sample="sample3_noisy.wav"><source src="audio/sample3_noisy.wav" type="audio/wav">Your browser does not support audio.</audio><span class="file-status">audio/sample3_noisy.wav</span></td>
-                <td><audio controls preload="none" data-sample="sample3_clean.wav"><source src="audio/sample3_clean.wav" type="audio/wav">Your browser does not support audio.</audio><span class="file-status">audio/sample3_clean.wav</span></td>
-                <td><audio controls preload="none" data-sample="sample3_ludat.wav"><source src="audio/sample3_ludat.wav" type="audio/wav">Your browser does not support audio.</audio><span class="file-status">audio/sample3_ludat.wav</span></td>
+                <th scope="row">Sample 3</th>
+                <td>
+                  <audio controls preload="none" data-sample="sample3_noisy.wav">
+                    <source src="audio/sample3_noisy.wav" type="audio/wav">
+                  </audio>
+                  <p class="file-status"></p>
+                </td>
+                <td>
+                  <audio controls preload="none" data-sample="sample3_clean.wav">
+                    <source src="audio/sample3_clean.wav" type="audio/wav">
+                  </audio>
+                  <p class="file-status"></p>
+                </td>
+                <td>
+                  <audio controls preload="none" data-sample="sample3_ludat.wav">
+                    <source src="audio/sample3_ludat.wav" type="audio/wav">
+                  </audio>
+                  <p class="file-status"></p>
+                </td>
               </tr>
             </tbody>
           </table>
         </div>
-        <p class="table-note">The audio player paths are placeholders. Replace the filenames with the selected WAV samples before publishing.</p>
+        <p class="note">
+          Note: The audio players will work after the corresponding WAV files
+          have been uploaded to the <code>docs/audio/</code> directory.
+        </p>
       </div>
     </section>
 
-    <section class="section container" id="results">
-      <div class="section-heading">
-        <p class="eyebrow">03 / EVALUATION</p>
-        <h2>Evaluation at a glance</h2>
-        <p class="section-intro">Reported project metrics are shown below as an initial summary. Confirm the final evaluation protocol and table values before publication.</p>
+    <section class="section" id="evaluation">
+      <div class="container">
+        <h2>Evaluation</h2>
+        <p>
+          Quantitative evaluation should be reported together with the
+          corresponding dataset, test protocol, and metric definitions.
+          The results below are placeholders until the final reported values
+          and experimental settings have been verified.
+        </p>
+
+        <div class="metrics-grid">
+          <div class="metric-card">
+            <span class="metric-label">PESQ</span>
+            <span class="metric-value">To be confirmed</span>
+          </div>
+          <div class="metric-card">
+            <span class="metric-label">STOI</span>
+            <span class="metric-value">To be confirmed</span>
+          </div>
+          <div class="metric-card">
+            <span class="metric-label">Parameters</span>
+            <span class="metric-value">To be confirmed</span>
+          </div>
+          <div class="metric-card">
+            <span class="metric-label">Real-Time Factor</span>
+            <span class="metric-value">To be confirmed</span>
+          </div>
+        </div>
       </div>
-      <div class="metrics-grid">
-        <article class="metric-card"><span class="metric-label">PESQ</span><strong>3.47</strong><span class="metric-caption">Perceptual quality</span></article>
-        <article class="metric-card"><span class="metric-label">STOI</span><strong>96.1%</strong><span class="metric-caption">Speech intelligibility</span></article>
-        <article class="metric-card"><span class="metric-label">Parameters</span><strong>1.60M</strong><span class="metric-caption">Model size</span></article>
-        <article class="metric-card"><span class="metric-label">Dataset</span><strong class="metric-text">VoiceBank<br>+ DEMAND</strong><span class="metric-caption">Evaluation benchmark</span></article>
-      </div>
-      <p class="disclaimer">These values are a starting point based on the project details available during page preparation. Add the corresponding protocol, comparison methods, and citations before treating this section as a final published result.</p>
     </section>
 
-    <section class="section resources-section" id="resources">
-      <div class="container resources-grid">
-        <div>
-          <p class="eyebrow">04 / RESOURCES</p>
-          <h2>Explore LUDAT-Net</h2>
-          <p class="section-intro">Source code and project documentation are maintained in the GitHub repository.</p>
+    <section class="section section-alt" id="resources">
+      <div class="container">
+        <h2>Resources</h2>
+        <div class="resource-list">
+          <a href="https://github.com/ALKATA-AI/LUDAT-Net"
+             target="_blank" rel="noopener noreferrer">
+            <span class="resource-title">GitHub Repository</span>
+            <span class="resource-description">
+              Source code and project documentation
+            </span>
+          </a>
         </div>
-        <div class="resource-links">
-          <a class="resource-link" href="https://github.com/ALKATA-AI/LUDAT-Net" target="_blank" rel="noopener noreferrer"><span><strong>Source code</strong><small>Browse implementation and instructions</small></span><b aria-hidden="true">↗</b></a>
-          <a class="resource-link" href="https://github.com/ALKATA-AI/LUDAT-Net#readme" target="_blank" rel="noopener noreferrer"><span><strong>README</strong><small>Installation, inference, and evaluation</small></span><b aria-hidden="true">↗</b></a>
-        </div>
+        <p class="note">
+          This page currently provides pre-generated audio examples;
+          it does not run model inference directly in the browser.
+        </p>
       </div>
     </section>
   </main>
 
   <footer class="footer">
-    <div class="container footer-inner"><a class="brand" href="#top"><span class="brand-mark">L</span><span>LUDAT-Net</span></a><p>Research demo · Speech enhancement</p><a href="#top">Back to top ↑</a></div>
+    <div class="container">
+      <p>LUDAT-Net | Monaural Speech Enhancement</p>
+      <p>Research project by ALKATA-AI</p>
+    </div>
   </footer>
+
   <script src="assets/js/main.js"></script>
 </body>
 </html>
-'''
-
-style_css = r'''@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
-:root{--bg:#0d0c17;--panel:#171625;--panel2:#1c1a2c;--ink:#f5f3ff;--muted:#a6a2bd;--line:rgba(255,255,255,.11);--purple:#a99aff;--purple2:#7964e8;--mint:#84e5cf;--max:1120px}
-*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:88px}body{margin:0;background:#fff;color:#201e31;font-family:"DM Sans",Arial,sans-serif;line-height:1.65}a{color:inherit;text-decoration:none}.container{width:min(var(--max),calc(100% - 48px));margin-inline:auto}.site-header{height:76px;background:rgba(13,12,23,.96);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10;backdrop-filter:blur(16px);color:var(--ink)}.nav{height:100%;display:flex;align-items:center;justify-content:space-between;gap:28px}.brand{display:inline-flex;align-items:center;gap:10px;font-family:Manrope,sans-serif;font-weight:800;letter-spacing:-.03em}.brand-mark{display:grid;place-items:center;width:30px;height:30px;border-radius:10px;background:linear-gradient(135deg,#b7a8ff,#6e5bdd);color:#17152b;font-size:18px}.nav-links{display:flex;gap:26px;color:#c0bdd0;font-size:13px}.nav-links a:hover,.footer a:hover{color:var(--purple)}.nav-cta{font-size:13px;font-weight:700;border:1px solid #4d4868;border-radius:9px;padding:8px 13px}.hero{position:relative;overflow:hidden;background:var(--bg);color:var(--ink);padding:92px 0 74px}.hero-glow{position:absolute;right:-160px;top:-250px;width:650px;height:650px;border-radius:50%;background:radial-gradient(circle,rgba(116,91,232,.28),transparent 68%);pointer-events:none}.hero-content{position:relative;z-index:1}.eyebrow{font-size:11px;letter-spacing:.17em;font-weight:700;color:#8278ba;margin:0 0 16px}.hero .eyebrow{color:#b9afff}.eyebrow-dot,.meta-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--mint);margin-right:8px}h1,h2,p{margin-top:0}h1,h2{font-family:Manrope,sans-serif;letter-spacing:-.045em}h1{font-size:clamp(42px,6vw,72px);line-height:1.1;margin:0;max-width:820px;font-weight:800}h1 span{color:var(--purple)}.hero-copy{max-width:610px;color:#b9b5cc;font-size:17px;margin:25px 0 28px}.hero-actions{display:flex;flex-wrap:wrap;gap:12px}.button{display:inline-flex;align-items:center;gap:13px;padding:12px 17px;border-radius:10px;font-size:13px;font-weight:700;transition:transform .2s}.button:hover{transform:translateY(-2px)}.button-primary{background:#b1a3ff;color:#17142b}.button-secondary{border:1px solid #49445f;color:#f4f0ff}.hero-meta{display:flex;gap:22px;flex-wrap:wrap;margin-top:33px;color:#9c97b4;font-size:12px}.hero-visual{position:relative;margin-top:54px}.wave-card{background:linear-gradient(135deg,#19172a,#12111e);border:1px solid #343049;border-radius:18px;padding:24px 28px;box-shadow:0 24px 80px #0004}.wave-heading{display:flex;justify-content:space-between;gap:15px;color:#d9d5ee;font-size:10px;letter-spacing:.14em;font-weight:700}.wave-label{color:#aaa5bd;font-size:9px}.wave-label-purple{color:#b3a4ff}.wave-divider{height:1px;background:#ffffff14;margin:20px 0}.waveform{height:58px;display:flex;align-items:center;justify-content:center;gap:4px;overflow:hidden}.waveform:before{content:"";display:block;width:100%;height:100%;background:repeating-linear-gradient(90deg,transparent 0 5px,#9a8aff 5px 7px,transparent 7px 11px);mask-image:radial-gradient(ellipse at center,#000 0%,transparent 78%);opacity:.9}.noisy-wave:before{background:repeating-linear-gradient(90deg,transparent 0 3px,#8b879f 3px 5px,transparent 5px 8px);transform:scaleY(.9)}.clean-wave:before{background:repeating-linear-gradient(90deg,transparent 0 4px,#a99aff 4px 7px,transparent 7px 11px);transform:scaleY(.65)}.section{padding-top:86px;padding-bottom:86px}.section-heading{margin-bottom:32px}.section-heading h2,.resources-grid h2{font-size:clamp(30px,4vw,43px);line-height:1.18;margin:0 0 12px;color:#211f33}.section-intro{color:#777489;max-width:650px;margin-bottom:0}.overview-grid{display:grid;grid-template-columns:1.35fr .8fr;gap:50px;align-items:start}.overview-main{color:#666477}.lead{font-family:Manrope,sans-serif;font-size:23px;line-height:1.45;font-weight:600;color:#29263e;letter-spacing:-.02em}.notice{margin-top:26px;border-left:3px solid #8c78ec;background:#f7f5ff;padding:16px 18px;border-radius:0 10px 10px 0}.notice strong{font-size:13px}.notice p{font-size:13px;margin:5px 0 0}.fact-card{border:1px solid #e9e7f1;border-radius:14px;padding:6px 20px;background:#fff;box-shadow:0 12px 35px #29204708}.fact{padding:16px 0;border-bottom:1px solid #eeedf4}.fact:last-child{border:0}.fact span,.fact strong{display:block}.fact span{font-size:11px;color:#8b879b;margin-bottom:4px}.fact strong{font-size:14px;color:#2c2941}.samples-section{background:#f7f6fb;border-top:1px solid #eeedf5;border-bottom:1px solid #eeedf5}.sample-toolbar{display:flex;align-items:center;justify-content:space-between;gap:18px;background:#fff;border:1px solid #e9e6f2;border-radius:12px 12px 0 0;padding:16px 20px}.sample-count{font-size:10px;font-weight:800;letter-spacing:.14em;color:#8b7add}.sample-toolbar p{margin:4px 0 0;font-size:12px;color:#7c788e}.coming-label{font-size:11px;color:#77718f;background:#f3f0ff;padding:7px 10px;border-radius:7px}.table-wrap{overflow-x:auto;background:#fff;border:1px solid #e9e6f2;border-top:0;border-radius:0 0 12px 12px}.audio-table{border-collapse:collapse;width:100%;min-width:790px}.audio-table th,.audio-table td{text-align:left;vertical-align:top;padding:17px 14px;border-bottom:1px solid #eeedf4}.audio-table thead th{background:#fbfaff;font-size:11px;color:#77728e;font-weight:700}.audio-table tbody th{min-width:120px}.audio-table tbody tr:last-child th,.audio-table tbody tr:last-child td{border-bottom:0}.sample-number{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:8px;background:#efecff;color:#7665d0;font-size:11px;margin-right:8px}.sample-title{font-size:12px;color:#312d48;white-space:nowrap}audio{display:block;width:190px;max-width:100%;height:34px}audio::-webkit-media-controls-panel{background:#f6f4ff}.file-status{display:block;font-family:monospace;font-size:10px;color:#9994aa;margin-top:7px;overflow-wrap:anywhere;max-width:190px}.table-note,.disclaimer{font-size:11px;color:#89859a;margin:13px 0 0}.metrics-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.metric-card{padding:23px 20px;border:1px solid #e9e6f2;border-radius:14px;background:#fff;min-height:165px}.metric-label{display:block;color:#858097;font-size:11px;font-weight:700;letter-spacing:.1em}.metric-card strong{display:block;font-family:Manrope,sans-serif;font-size:36px;line-height:1.3;color:#393052;margin:14px 0 7px;letter-spacing:-.04em}.metric-card .metric-text{font-size:23px}.metric-caption{font-size:11px;color:#8c879b}.resources-section{background:#171525;color:#f5f3ff}.resources-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}.resources-grid h2{color:#f5f3ff}.resources-grid .section-intro{color:#aaa5bd}.resource-links{border-top:1px solid #ffffff20}.resource-link{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:19px 0;border-bottom:1px solid #ffffff20}.resource-link strong,.resource-link small{display:block}.resource-link strong{font-size:14px}.resource-link small{font-size:11px;color:#aaa5bd;margin-top:3px}.resource-link b{font-size:20px;color:#b5a8ff}.footer{background:#100f1b;color:#aaa5bd;padding:22px 0;font-size:11px}.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:20px}.footer .brand{color:#f5f3ff;font-size:13px}.footer .brand-mark{width:25px;height:25px;font-size:15px}.footer p{margin:0}
-@media(max-width:800px){.nav-links{display:none}.hero{padding-top:70px}.overview-grid,.resources-grid{grid-template-columns:1fr;gap:30px}.metrics-grid{grid-template-columns:repeat(2,1fr)}.section{padding-top:65px;padding-bottom:65px}.hero-visual{margin-top:38px}.wave-card{padding:20px}.resources-grid{align-items:start}}
-@media(max-width:480px){.container{width:calc(100% - 32px)}.site-header{height:66px}.nav{gap:10px}.nav-cta{font-size:11px;padding:7px 9px}.hero{padding:58px 0 55px}h1{font-size:42px}.hero-copy{font-size:15px}.hero-meta{gap:10px 15px}.wave-card{padding:17px}.metrics-grid{gap:9px}.metric-card{padding:16px 13px;min-height:145px}.metric-card strong{font-size:30px}.metric-card .metric-text{font-size:20px}.sample-toolbar{align-items:flex-start;flex-direction:column}.coming-label{align-self:flex-start}.footer-inner{flex-wrap:wrap}.footer p{order:3;width:100%}}
-'''
-
-main_js = r'''// LUDAT-Net demo page: lightweight client-side enhancements.
-document.addEventListener("DOMContentLoaded", () => {
-  // Keep only one sample playing at a time for easier A/B listening.
-  const players = Array.from(document.querySelectorAll("audio"));
-  players.forEach((player) => {
-    player.addEventListener("play", () => {
-      players.forEach((other) => {
-        if (other !== player) other.pause();
-      });
-    });
-  });
-
-  // Missing placeholder files are expected until real WAVs are added.
-  players.forEach((player) => {
-    player.addEventListener("error", () => {
-      const status = player.parentElement?.querySelector(".file-status");
-      if (status) status.textContent = `Add file: ${player.dataset.sample}`;
-    });
-  });
-});
-'''
-
-audio_readme = r'''# Audio samples for the LUDAT-Net demo
-
-Place the selected WAV files in this directory. The current page expects these example names:
-
-- `sample1_noisy.wav`
-- `sample1_clean.wav`
-- `sample1_ludat.wav`
-- `sample2_noisy.wav`
-- `sample2_clean.wav`
-- `sample2_ludat.wav`
-- `sample3_noisy.wav`
-- `sample3_clean.wav`
-- `sample3_ludat.wav`
-
-`noisy` = noisy input, `clean` = clean reference, `ludat` = enhanced output from LUDAT-Net.
-
-You can rename the files, but then update the corresponding `src` and `data-sample` attributes in `../index.html`.
-
-Use only samples you are permitted to publish. GitHub Pages content is publicly accessible.
-'''
-
-root_readme = r'''# LUDAT-Net Demo Starter
-
-This folder contains a static GitHub Pages demo starter for the LUDAT-Net speech enhancement project.
-
-## Structure
-
-- `docs/index.html` — demo page
-- `docs/assets/css/style.css` — styles
-- `docs/assets/js/main.js` — small audio-player behavior
-- `docs/audio/README.md` — expected audio filenames
-
-## Publish with GitHub Pages
-
-1. Add the contents of `docs/` to the `docs/` directory in the `main` branch of `https://github.com/ALKATA-AI/LUDAT-Net`.
-2. Open repository **Settings → Pages**.
-3. Under **Build and deployment**, choose **Deploy from a branch**.
-4. Choose branch `main` and folder `/docs`, then click **Save**.
-5. Wait for the deployment to finish. The expected project URL is `https://alkata-ai.github.io/LUDAT-Net/`.
-
-## Before publishing
-
-- Replace the placeholder sample WAVs with real files and make sure filenames match the audio players in `index.html`.
-- Verify the exact abstract, author names/affiliations, metric values, and evaluation protocol.
-- Make sure every audio sample and image is allowed to be publicly shared.
-- This is a static demo page: it does not run model inference on uploaded audio.
-'''
-
-(docs / "index.html").write_text(index_html, encoding="utf-8")
-(css / "style.css").write_text(style_css, encoding="utf-8")
-(js / "main.js").write_text(main_js, encoding="utf-8")
-(audio / "README.md").write_text(audio_readme, encoding="utf-8")
-(base / "README.md").write_text(root_readme, encoding="utf-8")
-(base / ".nojekyll").write_text("", encoding="utf-8")
-
-zip_path = Path("/mnt/data/LUDAT-Net-demo-starter.zip")
-with zipfile.ZipFile(zip_path, "w", zipfile.ZIP_DEFLATED) as zf:
-    for p in base.rglob("*"):
-        if p.is_file():
-            zf.write(p, p.relative_to(base.parent))
-
-print(f"Created: {zip_path}")
-print("Files:")
-for p in sorted(base.rglob("*")):
-    if p.is_file():
-        print(p.relative_to(base))
