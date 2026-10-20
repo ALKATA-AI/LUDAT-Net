@@ -290,8 +290,8 @@ h1 span {
 }
 
 .section {
-  padding-top: 40px;
-  padding-bottom: 40px;
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 
 .section-heading {
@@ -455,7 +455,7 @@ h1 span {
 }
 
 .audio-table th {
-  font-size: 2.5rem;
+  font-size: 1rem;
 }
 
 .audio-table td {
@@ -467,7 +467,7 @@ h1 span {
 
 .audio-table thead th {
   background: #fbfaff;
-  font-size: 5px;
+  font-size: 20px;
   color: #77728e;
   font-weight: 700;
 }
