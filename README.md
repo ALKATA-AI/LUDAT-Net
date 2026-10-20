@@ -2,7 +2,7 @@
 
 ## Online Demo
 
-An interactive demo of LUDAT-Net is available on GitHub Pages, presenting an ablation study on the effect of LUE hierarchy depth.
+An online demo of LUDAT-Net is available on GitHub Pages.
 
 **[Visit the LUDAT-Net Demo](https://alkata-ai.github.io/LUDAT-Net/)**
 
