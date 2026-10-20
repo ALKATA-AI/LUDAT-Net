@@ -307,9 +307,16 @@ h1 span {
 }
 
 .section-intro {
+  white-space: normal;
   color: #777489;
   max-width: 650px;
   margin-bottom: 0;
+}
+
+@media (min-width: 768px) {
+  .section-intro {
+    white-space: nowrap;
+  }
 }
 
 .overview-grid {
@@ -434,7 +441,10 @@ h1 span {
   min-width: 790px;
 }
 
-.audio-table th,
+.audio-table th {
+  font-size: 1rem;
+}
+
 .audio-table td {
   text-align: left;
   vertical-align: top;
