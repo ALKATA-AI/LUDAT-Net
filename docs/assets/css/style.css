@@ -290,8 +290,8 @@ h1 span {
 }
 
 .section {
-  padding-top: 86px;
-  padding-bottom: 86px;
+  padding-top: 48px;
+  padding-bottom: 48px;
 }
 
 .section-heading {
@@ -317,6 +317,16 @@ h1 span {
   .section-intro {
     white-space: nowrap;
   }
+}
+
+/* Spacing for the ablation study section */
+#ablation h2 {
+  margin-bottom: 12px;
+}
+
+.dataset-info {
+  margin-top: 0;
+  margin-bottom: 24px;
 }
 
 .overview-grid {
@@ -442,7 +452,7 @@ h1 span {
 }
 
 .audio-table th {
-  font-size: 1rem;
+  font-size: 1.5rem;
 }
 
 .audio-table td {
@@ -653,8 +663,8 @@ audio {
   }
 
   .section {
-    padding-top: 65px;
-    padding-bottom: 65px;
+    padding-top: 40px;
+    padding-bottom: 40px;
   }
 
   .hero-visual {
