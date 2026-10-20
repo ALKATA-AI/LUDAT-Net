@@ -290,8 +290,8 @@ h1 span {
 }
 
 .section {
-  padding-top: 30px;
-  padding-bottom: 30px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .section-heading {
@@ -467,7 +467,7 @@ h1 span {
 
 .audio-table thead th {
   background: #fbfaff;
-  font-size: 20px;
+  font-size: 17px;
   color: #77728e;
   font-weight: 700;
 }
