@@ -290,8 +290,8 @@ h1 span {
 }
 
 .section {
-  padding-top: 48px;
-  padding-bottom: 48px;
+  padding-top: 40px;
+  padding-bottom: 40px;
 }
 
 .section-heading {
@@ -326,7 +326,10 @@ h1 span {
 
 .dataset-info {
   margin-top: 0;
-  margin-bottom: 24px;
+  margin-bottom: 28px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #4b4663;
 }
 
 .overview-grid {
@@ -660,11 +663,6 @@ audio {
 
   .metrics-grid {
     grid-template-columns: repeat(2, 1fr);
-  }
-
-  .section {
-    padding-top: 40px;
-    padding-bottom: 40px;
   }
 
   .hero-visual {
